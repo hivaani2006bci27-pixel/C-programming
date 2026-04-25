@@ -1,0 +1,19 @@
+#include <stdio.h>
+int main() 
+{
+    int n, i;
+    printf("Enter number of staff readings: ");
+    scanf("%d", &n);
+    float readings[n], rl[n], diff;
+    printf("Enter Benchmark RL: ");
+    scanf("%f", &rl[0]);
+    printf("Enter %d staff readings:\n", n);
+    for(i = 0; i < n; i++) scanf("%f", &readings[i]);
+    for(i = 1; i < n; i++)
+    {
+        diff = readings[i-1] - readings[i]; // +ve is Rise, -ve is Fall
+        rl[i] = rl[i-1] + diff;
+        printf("Point %d: RL = %.3f (%s)\n", i+1, rl[i], (diff >= 0 ? "Rise" : "Fall"));
+    }
+    return 0;
+}
