@@ -1,0 +1,23 @@
+#include <stdio.h>
+int main() 
+{
+    float e, n;
+    int choice;
+    printf("1. Calculate Void Ratio from Porosity\n2. Calculate Porosity from Void Ratio\nChoice: ");
+    scanf("%d", &choice);
+    if (choice == 1)
+    {
+        printf("Enter Porosity (as decimal, e.g., 0.3): ");
+        scanf("%f", &n);
+        e = n / (1 - n);
+        printf("Void Ratio (e): %.3f\n", e);
+    } 
+    else 
+    {
+        printf("Enter Void Ratio: ");
+        scanf("%f", &e);
+        n = (e / (1 + e)) * 100;
+        printf("Porosity (n): %.2f%%\n", n);
+    }
+    return 0;
+}
