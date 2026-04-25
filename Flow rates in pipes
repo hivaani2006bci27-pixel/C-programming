@@ -1,0 +1,16 @@
+#include <stdio.h>
+#include <math.h>
+int main() 
+{
+    float n, R, S, V;
+    printf("Enter Manning's Roughness (n): ");
+    scanf("%f", &n);
+    printf("Enter Hydraulic Radius R (m): ");
+    scanf("%f", &R);
+    printf("Enter Slope of Energy Grade Line (S): ");
+    scanf("%f", &S);
+    V = (1 / n) * pow(R, (2.0 / 3.0)) * sqrt(S);
+    printf("Flow Velocity (V): %.3f m/s\n", V);
+    return 0;
+}
+
