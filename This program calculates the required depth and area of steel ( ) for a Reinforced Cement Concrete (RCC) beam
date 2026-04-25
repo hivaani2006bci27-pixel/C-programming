@@ -1,0 +1,16 @@
+#include <stdio.h>
+#include <math.h>
+int main() 
+{
+    float Mu, fck, fy, b, dprov, Ast;
+    printf("Enter Bending Moment (Mu) in kNm: ");
+    scanf("%f", &Mu);
+    Mu = Mu * 1000000; // Convert to Nmm
+    printf("Enter fck (N/mm2), fy (N/mm2), and width b (mm): ");
+    scanf("%f %f %f", &fck, &fy, &b);
+    printf("Enter provided depth d (mm): ");
+    scanf("%f", &dprov);
+    Ast = 0.5 * (fck / fy) * (1 - sqrt(1 - (4.6 * Mu) / (fck * b * dprov * dprov))) * b * dprov;
+    printf("\nRequired Area of Steel (Ast): %.2f mm2\n", Ast);
+    return 0;
+}
