@@ -1,0 +1,15 @@
+#include <stdio.h>
+int main() 
+{
+    float C, i, A, Q;
+    printf("--- Peak Runoff Calculator (Rational Method) ---\n");
+    printf("Enter Runoff Coefficient (C) [0.0 to 1.0]: ");
+    scanf("%f", &C);
+    printf("Enter Rainfall Intensity (i) in mm/hr: ");
+    scanf("%f", &i);
+    printf("Enter Catchment Area (A) in hectares: ");
+    scanf("%f", &A);
+    Q = (C * i * A) / 360.0;
+    printf("\nEstimated Peak Discharge (Q): %.3f m3/s\n", Q);
+    return 0;
+}
