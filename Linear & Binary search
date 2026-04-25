@@ -1,0 +1,24 @@
+#include <stdio.h>
+int main() 
+{
+    int arr[] = {10, 23, 35, 40, 55, 70, 85, 90}; 
+    int n = sizeof(arr) / sizeof(arr[0]);
+    int target, low = 0, high = n - 1, mid, found = -1;
+    printf("Array: 10, 23, 35, 40, 55, 70, 85, 90\n");
+    printf("Enter number to search: ");
+    scanf("%d", &target);
+    while (low <= high)
+    {
+        mid = low + (high - low) / 2;
+        if (arr[mid] == target) 
+        {
+            found = mid;
+            break;
+        }
+        if (arr[mid] < target) low = mid + 1;
+        else high = mid - 1;
+    }
+    if (found != -1) printf("Found at index: %d\n", found);
+    else printf("Not found in the list.\n");
+    return 0;
+}
