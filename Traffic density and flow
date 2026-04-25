@@ -1,0 +1,15 @@
+#include <stdio.h>
+int main() 
+{
+    float speed, density, flow;
+    printf("Enter Traffic Speed (km/hr): ");
+    scanf("%f", &speed);
+    printf("Enter Traffic Density (vehicles/km): ");
+    scanf("%f", &density);
+    flow = density * speed;
+    printf("\nTraffic Flow (q): %.2f vehicles/hour\n", flow);
+    if (flow < 500) printf("Status: Low Traffic / Free Flow\n");
+    else if (flow < 1500) printf("Status: Moderate Traffic\n");
+    else printf("Status: Heavy Traffic / Near Capacity\n");
+    return 0;
+}
