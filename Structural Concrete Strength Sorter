@@ -1,0 +1,31 @@
+#include <stdio.h>
+int main()
+{
+    int total_records;
+    printf("=== Batch Concrete Strength Sorter (Bubble Sort Implementation) ===\n");
+    printf("Enter number of concrete structural samples to sort: ");
+    scanf("%d", &total_records);
+    double strengths[total_records];
+    for (int i = 0; i < total_records; i++) {
+        printf("Enter strength data in MPa for sample %d: ", i + 1);
+        scanf("%lf", &strengths[i]);
+    }
+    for (int i = 0; i < total_records - 1; i++)
+{
+        for (int j = 0; j < total_records - i - 1; j++) 
+{
+            if (strengths[j] > strengths[j + 1]) 
+{
+                double storage_variable = strengths[j];
+                strengths[j] = strengths[j + 1];
+                strengths[j + 1] = storage_variable;
+            }
+        }
+    }
+    printf("\nSorted Log Data (Lowest Strength to Highest Strength Limit):\n");
+    for (int i = 0; i < total_records; i++) 
+{
+        printf("Sample Log Step %d: %.2f MPa\n", i + 1, strengths[i]);
+    }
+    return 0;
+}
