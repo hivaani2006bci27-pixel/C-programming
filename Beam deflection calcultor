@@ -1,0 +1,30 @@
+#include <stdio.h>
+int main()
+{
+    double force;     
+    double length;    
+    double E;         
+    double I;        
+    double deflection;
+    printf("--- Simple Beam Deflection Calculator ---\n");
+    printf("Enter the point load weight (in Newtons): ");
+    scanf("%lf", &force);
+    printf("Enter the length of the beam (in millimeters): ");
+    scanf("%lf", &length);
+    printf("Enter Material Strength E (e.g., 200000 for Steel): ");
+    scanf("%lf", &E);
+    printf("Enter Shape Strength I (Moment of Inertia in mm4): ");
+    scanf("%lf", &I);
+    double length_cubed = length * length * length;
+    deflection = (force * length_cubed) / (48.0 * E * I);
+    printf("\nMaximum bending in the center of the beam: %.4f mm\n", deflection);
+    if (deflection > (length / 360.0)) 
+{
+        printf("⚠️ WARNING: Deflection exceeds standard safety limits (Length/360)!\n");
+    } 
+else
+{
+        printf("✅ SUCCESS: Deflection is within safe building limits.\n");
+    }
+    return 0;
+}
