@@ -1,0 +1,33 @@
+#include <stdio.h>
+int main() {
+    double total_volume;     
+    double dry_weight;       
+    double specific_gravity; 
+    double volume_solids, volume_voids;
+    double void_ratio, porosity;
+    printf("--- Geotechnical Soil Void Test ---\n");
+    printf("Enter total volume of the soil sample (in cm3): ");
+    scanf("%lf", &total_volume);
+    printf("Enter dry weight of the soil sample (in grams): ");
+    scanf("%lf", &dry_weight);
+    printf("Enter Specific Gravity of soil grains (e.g., 2.67): ");
+    scanf("%lf", &specific_gravity);
+    volume_solids = dry_weight / (specific_gravity * 1.0);
+    volume_voids = total_volume - volume_solids;
+    void_ratio = volume_voids / volume_solids;
+    porosity = (volume_voids / total_volume) * 100.0;
+    printf("\n--- Soil Test Property Report ---\n");
+    printf("Volume of solid soil particles: %.2f cm³\n", volume_solids);
+    printf("Volume of empty spaces (voids): %.2f cm³\n", volume_voids);
+    printf("Void Ratio (e)                : %.3f\n", void_ratio);
+    printf("Porosity (n)                  : %.2f%%\n", porosity);
+    if (void_ratio > 0.8) 
+{
+        printf("\n⚠️ NOTICE: Loose soil detected. Compaction rolling recommended before laying foundation!\n");
+    } 
+else 
+{
+        printf("\n✅ SUCCESS: Soil is dense and well-compacted.\n");
+    }
+    return 0;
+}
