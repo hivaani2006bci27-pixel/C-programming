@@ -1,0 +1,32 @@
+#include <stdio.h>
+#include <stdlib.h>
+int main() 
+{
+    int sides;
+    printf("--- Land Surveying Area Calculator ---\n");
+    printf("Enter the number of corners/vertices of the plot: ");
+    scanf("%d", &sides);
+    if (sides < 3) 
+{
+        printf("A plot of land must have at least 3 sides!\n");
+        return 1;
+    }
+    double x[sides], y[sides];
+    for (int i = 0; i < sides; i++) 
+{
+        printf("Enter coordinates for corner %d (X Y): ", i + 1);
+        scanf("%lf %lf", &x[i], &y[i]);
+    }
+    double area = 0.0;
+    int j = sides - 1; 
+    for (int i = 0; i < sides; i++) 
+{
+        area += (x[j] + x[i]) * (y[j] - y[i]);
+        j = i; 
+    }
+    area = abs(area) / 2.0;
+    printf("\n--- Survey Results ---\n");
+    printf("Total calculated land area: %.2f square meters\n", area);
+    printf("In hectares: %.4f ha\n", area / 10000.0);
+    return 0;
+}
