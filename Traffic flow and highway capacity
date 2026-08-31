@@ -1,0 +1,25 @@
+#include <stdio.h>
+int main() 
+{
+    double saturation_flow = 1800.0; 
+    double lane_width;
+    double heavy_vehicle_percentage;
+    double adjusted_flow;
+    printf("--- Highway Lane Capacity Estimator ---\n");
+    printf("Enter lane width in meters (Standard is 3.5m): ");
+    scanf("%lf", &lane_width);
+    printf("Enter percentage of heavy trucks/buses (e.g., enter 12 for 12%%): ");
+    scanf("%lf", &heavy_vehicle_percentage);
+    double width_factor = 1.0;
+    if (lane_width < 3.5)
+{
+        width_factor = 0.90; 
+    }
+    double truck_factor = 1.0 / (1.0 + (heavy_vehicle_percentage / 100.0) * (1.5 - 1.0));
+    adjusted_flow = saturation_flow * width_factor * truck_factor;
+    printf("\n--- Traffic Analysis Report ---\n");
+    printf("Lane Width Factor     : %.2f\n", width_factor);
+    printf("Heavy Vehicle Factor  : %.2f\n", truck_factor);
+    printf("Maximum Lane Capacity : %.0f vehicles/hour/lane\n", adjusted_flow);
+    return 0;
+}
