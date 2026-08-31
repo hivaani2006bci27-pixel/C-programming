@@ -1,0 +1,30 @@
+#include <stdio.h>
+int main() 
+{
+    double load_kN, load_N;
+    double side_mm = 150.0; 
+    double area_mm2, compressive_strength;
+    printf("--- Concrete Cube Strength Validator ---\n");
+    printf("Enter the maximum crushing load (in kiloNewtons - kN): ");
+    scanf("%lf", &load_kN);
+    load_N = load_kN * 1000.0;
+    area_mm2 = side_mm * side_mm;
+    compressive_strength = load_N / area_mm2;
+    printf("\n--- Test Results ---\n");
+    printf("Total Cross-Sectional Area: %.2f mm²\n", area_mm2);
+    printf("Calculated Strength       : %.2f N/mm² (MPa)\n", compressive_strength);
+    if (compressive_strength >= 25.0)
+{
+        printf("\n✅ RESULT: Target achieved! Safe for M25 grade constructions.\n");
+    }
+else if (compressive_strength >= 20.0) 
+{
+        printf("\n⚠️ NOTICE: Safe for M20 grade only. Check structural design requirements.\n");
+    } 
+else 
+{
+        printf("\n❌ WARNING: Strength too low! Concrete cube failed safety limits.\n");
+    }
+
+    return 0;
+}
