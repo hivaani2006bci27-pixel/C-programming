@@ -1,0 +1,50 @@
+#include <stdio.h>
+#include <stdlib.h>
+struct SurveyPoint 
+{
+    int pointID;
+    double elevation;
+    struct SurveyPoint* nextNode; 
+};
+int main() 
+{
+    struct SurveyPoint* headNode = NULL;
+    struct SurveyPoint* tempNode = NULL;
+    int choice = 1;
+    int counter = 1;
+    printf("=== Dynamic Land Survey Point Monitor (Linked List Structure) ===\n");
+    while (choice == 1) 
+{
+        struct SurveyPoint* newNode = (struct SurveyPoint*)malloc(sizeof(struct SurveyPoint));
+        newNode->pointID = counter++;
+        printf("\nEnter height/elevation reading for Survey Point %d (meters): ", newNode->pointID);
+        scanf("%lf", &newNode->elevation);
+        newNode->nextNode = NULL;
+        if (headNode == NULL) 
+{
+            headNode = newNode;
+        }
+else
+{
+            tempNode = headNode;
+            while (tempNode->nextNode != NULL) 
+{
+                tempNode = tempNode->nextNode;
+            }
+            tempNode->nextNode = newNode;
+        }
+        printf("Do you want to add another point? (1 for Yes / 0 for No): ");
+        scanf("%d", &choice);
+    }
+    printf("\n--- Final Compiled Survey Point Linked Chain ---\n");
+    tempNode = headNode;
+    while (tempNode != NULL) 
+{
+        printf("[Point ID: %d | Elevation: %.2fm] -> ", tempNode->pointID, tempNode->elevation);
+        struct SurveyPoint* nodeToDelete = tempNode;
+        tempNode = tempNode->nextNode;
+        free(nodeToDelete); 
+    }
+    printf("NULL\n");
+    return 0;
+}
