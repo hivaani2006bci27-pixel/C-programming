@@ -1,0 +1,24 @@
+#include <stdio.h>
+int main() 
+{
+    double friction_factor; 
+    double pipe_length;     
+    double velocity;        
+    double diameter;        
+    double gravity = 9.81; 
+    double head_loss;
+    printf("--- Water Pipe Friction Loss Calculator ---\n");
+    printf("Enter friction coefficient (e.g., 0.02 for smooth iron): ");
+    scanf("%lf", &friction_factor);
+    printf("Enter pipe length (meters): ");
+    scanf("%lf", &pipe_length);
+    printf("Enter pipe internal diameter (meters): ");
+    scanf("%lf", &diameter);
+    printf("Enter water velocity (meters/second): ");
+    scanf("%lf", &velocity);
+    double velocity_squared = velocity * velocity;
+    head_loss = (friction_factor * pipe_length * velocity_squared) / (diameter * 2.0 * gravity);
+    printf("\nEnergy/Pressure height lost to friction: %.3f meters\n", head_loss);
+    printf("Your pumps must be strong enough to overcome this loss!\n");
+    return 0;
+}
