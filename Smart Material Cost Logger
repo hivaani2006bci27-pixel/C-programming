@@ -1,0 +1,27 @@
+#include <stdio.h>
+int main() 
+{
+    char material_name[30];
+    double cost_per_unit;
+    int quantity_needed;
+    FILE *filePointer;
+    filePointer = fopen("Project_Material_Database.txt", "a");
+    if (filePointer == NULL) 
+{
+        printf("System file handling error occurred!\n");
+        return 1;
+    }
+    printf("=== Automated Estimator Database (File I/O Streaming) ===\n");
+    printf("Enter Material Item Descriptor Name: ");
+    scanf("%s", material_name);
+    printf("Enter Unit Purchase Cost Standard Price: ");
+    scanf("%lf", &cost_per_unit);
+    printf("Enter Quantity Unit Volume metrics: ");
+    scanf("%d", &quantity_needed);
+    double total_cost = cost_per_unit * quantity_needed;
+    fprintf(filePointer, "Item: %-15s | Unit Price: Rs.%-7.2f | Qty: %-5d | Total: Rs.%.2f\n", 
+            material_name, cost_per_unit, quantity_needed, total_cost);
+    fclose(filePointer);
+    printf("\n✅ Record successfully compiled and appended inside 'Project_Material_Database.txt' file!\n");
+    return 0;
+}
