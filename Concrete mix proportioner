@@ -1,0 +1,34 @@
+#include <stdio.h>
+int main()
+{
+    double target_volume, dry_volume;
+    double cement_ratio, sand_ratio, gravel_ratio, total_ratio;
+    double cement_kg, sand_kg, gravel_kg;
+    const double CEMENT_DENSITY = 1440.0;
+    const double SAND_DENSITY = 1600.0;
+    const double GRAVEL_DENSITY = 1500.0;
+    printf("--- Concrete Mix Weight Estimator ---\n");
+    printf("Enter required volume of wet concrete (in cubic meters): ");
+    scanf("%lf", &target_volume);
+    dry_volume = target_volume * 1.54;
+    printf("\nEnter the mixing ratio parts (e.g., for M20 mix, enter 1 1.5 3):\n");
+    printf("Cement part: ");
+    scanf("%lf", &cement_ratio);
+    printf("Sand part: ");
+    scanf("%lf", &sand_ratio);
+    printf("Gravel part: ");
+    scanf("%lf", &gravel_ratio);
+    total_ratio = cement_ratio + sand_ratio + gravel_ratio;
+    double cement_vol = (cement_ratio / total_ratio) * dry_volume;
+    double sand_vol = (sand_ratio / total_ratio) * dry_volume;
+    double gravel_vol = (gravel_ratio / total_ratio) * dry_volume;
+    cement_kg = cement_vol * CEMENT_DENSITY;
+    sand_kg = sand_vol * SAND_DENSITY;
+    gravel_kg = gravel_vol * GRAVEL_DENSITY;
+    printf("\n--- Material Requirements Summary ---\n");
+    printf("Total dry volume needed: %.2f m³\n", dry_volume);
+    printf("Weight of Cement needed: %.2f kg (~%.1f bags of 50kg)\n", cement_kg, (cement_kg / 50.0));
+    printf("Weight of Sand needed: %.2f kg\n", sand_kg);
+    printf("Weight of Gravel needed: %.2f kg\n", gravel_kg);
+    return 0;
+}
