@@ -1,0 +1,26 @@
+#include <stdio.h>
+int main() 
+{
+    double flow_rate;        
+    double overflow_rate;    
+    double detention_time;   
+    double surface_area, volume, depth;
+    printf("--- Wastewater Treatment Tank Sizing Tool ---\n");
+    printf("Enter daily water flow rate (cubic meters per day): ");
+    scanf("%lf", &flow_rate);
+    printf("Enter design surface overflow rate (e.g., 30 m3/m2/day): ");
+    scanf("%lf", &overflow_rate);
+    printf("Enter desired detention time (in hours, e.g., 2.5): ");
+    scanf("%lf", &detention_time);
+    surface_area = flow_rate / overflow_rate;
+    volume = (flow_rate / 24.0) * detention_time;
+    depth = volume / surface_area;
+    printf("\n--- Designed Tank Dimensions ---\n");
+    printf("Required Tank Surface Area : %.2f square meters\n", surface_area);
+    printf("Required Total Tank Volume : %.2f cubic meters\n", volume);
+    printf("Calculated Liquid Depth    : %.2f meters\n", depth);
+    printf("\n💡 Design Suggestion (3:1 Ratio):\n");
+    double width = (surface_area / 3.0); // Simple math approximation
+    printf("-> Try a tank roughly %.1fm wide and %.1fm long.\n", width, width * 3.0);
+    return 0;
+}
